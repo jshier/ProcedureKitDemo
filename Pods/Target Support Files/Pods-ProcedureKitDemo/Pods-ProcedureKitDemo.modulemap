@@ -1,0 +1,6 @@
+framework module Pods_ProcedureKitDemo {
+  umbrella header "Pods-ProcedureKitDemo-umbrella.h"
+
+  export *
+  module * { export * }
+}

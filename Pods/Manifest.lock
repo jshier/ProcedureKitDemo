@@ -1,0 +1,24 @@
+PODS:
+  - ProcedureKit (4.0.0.beta.4):
+    - ProcedureKit/Standard (= 4.0.0.beta.4)
+  - ProcedureKit/Standard (4.0.0.beta.4)
+
+DEPENDENCIES:
+  - ProcedureKit (from `https://github.com/ProcedureKit/ProcedureKit.git`, branch `development`)
+
+EXTERNAL SOURCES:
+  ProcedureKit:
+    :branch: development
+    :git: https://github.com/ProcedureKit/ProcedureKit.git
+
+CHECKOUT OPTIONS:
+  ProcedureKit:
+    :commit: 746aa1e6cc42174cf7f402fd0aba71093a9b7e6e
+    :git: https://github.com/ProcedureKit/ProcedureKit.git
+
+SPEC CHECKSUMS:
+  ProcedureKit: 9160071e54e3885fad82f72acc8474366c764f5b
+
+PODFILE CHECKSUM: bf15dfe8baf15ba4e7f2d5582adaf004e762aea1
+
+COCOAPODS: 1.2.0.beta.1
