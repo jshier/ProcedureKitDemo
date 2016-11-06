@@ -14,13 +14,24 @@ class ViewController: UIViewController {
     @IBOutlet var kittensImageView: UIImageView!
     
     @IBAction func makeKittens(_ sender: UIButton) {
-        let existenceCondition = KittenExistenceCondition()
-        let kittenProcedure = KittenResizeProcedure(size: kittensImageView.bounds.size) { image in
+        let readingProcedure = KittenReadingProcedure()
+        let kittenProcedure = KittenResizeProcedure(size: kittensImageView.bounds.size).injectResult(from: readingProcedure)
+        let completionProcedure = KittenCompletionProcedure { (image, error) in
             self.kittensImageView.image = image
+            
+            // Handle error
         }
-        kittenProcedure.add(condition: existenceCondition)
+        .inject(dependency: kittenProcedure) { (procedure, dependency, errors) in
+            guard let resizedImage = dependency.result.value else {
+                procedure.error = errors.first
+                return
+            }
+            
+            procedure.requirement = .ready(resizedImage)
+        }
+        
         let queue = ProcedureQueue()
-        queue.add(operation: kittenProcedure)
+        queue.add(operations: readingProcedure, kittenProcedure, completionProcedure)
     }
 
 }

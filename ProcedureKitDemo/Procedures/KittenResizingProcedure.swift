@@ -9,16 +9,19 @@
 import ProcedureKit
 import UIKit
 
-class KittenResizeProcedure: Procedure {
+class KittenResizeProcedure: Procedure, ResultInjection {
     
-    typealias ImageCompletionHandler = (_ resultImage: UIImage?) -> Void
+    var requirement: PendingValue<UIImage> = .pending
+    var result: PendingValue<UIImage> = .pending
+    
+    var resizedImage: UIImage? {
+        return result.value
+    }
     
     let size: CGSize
-    let completionHandler: ImageCompletionHandler
 
-    init(size: CGSize, completionHandler: @escaping ImageCompletionHandler) {
+    init(size: CGSize) {
         self.size = size
-        self.completionHandler = completionHandler
         
         super.init()
     }
@@ -26,17 +29,23 @@ class KittenResizeProcedure: Procedure {
     override func execute() {
         guard !isCancelled else { return }
         
-        defer { finish() }
+        var error: Error? = nil
+        defer { finish(withError: error) }
         
-        guard let path = Bundle.main.path(forResource: "BigKitten", ofType: "jpeg"),
-              let image = UIImage(contentsOfFile: path) else { return }
+        guard let inputImage = requirement.value else {
+            error = ProcedureKitError.requirementNotSatisfied()
+            return
+        }
         
         UIGraphicsBeginImageContextWithOptions(size, true, 0.0)
-        image.draw(in: CGRect(origin: .zero, size: size))
-        let resizedImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
+        defer { UIGraphicsEndImageContext() }
+        inputImage.draw(in: CGRect(origin: .zero, size: size))
+        guard let resizedImage = UIGraphicsGetImageFromCurrentImageContext() else {
+            error = KittenError.resizeFailed
+            return
+        }
         
-        DispatchQueue.main.async { self.completionHandler(resizedImage) }
+        result = .ready(resizedImage)
     }
     
 }
