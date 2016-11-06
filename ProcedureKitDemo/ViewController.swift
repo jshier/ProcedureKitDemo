@@ -14,9 +14,11 @@ class ViewController: UIViewController {
     @IBOutlet var kittensImageView: UIImageView!
     
     @IBAction func makeKittens(_ sender: UIButton) {
+        let existenceCondition = KittenExistenceCondition()
         let kittenProcedure = KittenResizeProcedure(size: kittensImageView.bounds.size) { image in
             self.kittensImageView.image = image
         }
+        kittenProcedure.add(condition: existenceCondition)
         let queue = ProcedureQueue()
         queue.add(operation: kittenProcedure)
     }
