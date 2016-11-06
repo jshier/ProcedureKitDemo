@@ -40,17 +40,24 @@
                                     <constraint firstAttribute="width" secondItem="8Rr-Ke-yp8" secondAttribute="height" multiplier="1:1" id="6me-gY-rEw"/>
                                 </constraints>
                             </imageView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="8pn-oe-tD1">
+                                <rect key="frame" x="169" y="211" width="37" height="37"/>
+                                <color key="color" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="KnV-ui-65J" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="2H7-ff-wBC"/>
                             <constraint firstItem="KnV-ui-65J" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="AGV-Jr-fQD"/>
+                            <constraint firstItem="8pn-oe-tD1" firstAttribute="centerX" secondItem="8Rr-Ke-yp8" secondAttribute="centerX" id="Are-rJ-9lf"/>
                             <constraint firstItem="8Rr-Ke-yp8" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="KgW-iC-l2H"/>
                             <constraint firstItem="8Rr-Ke-yp8" firstAttribute="top" secondItem="KnV-ui-65J" secondAttribute="bottom" constant="8" id="kI1-zZ-bcU"/>
+                            <constraint firstItem="8pn-oe-tD1" firstAttribute="centerY" secondItem="8Rr-Ke-yp8" secondAttribute="centerY" id="nbC-Xk-H3e"/>
                             <constraint firstItem="8Rr-Ke-yp8" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="zkc-ye-Hh1"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="8pn-oe-tD1" id="Szt-fA-kjZ"/>
                         <outlet property="kittensImageView" destination="8Rr-Ke-yp8" id="y70-sz-J5b"/>
                     </connections>
                 </viewController>

@@ -12,9 +12,12 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBOutlet var kittensImageView: UIImageView!
+    @IBOutlet var activityIndicator: UIActivityIndicatorView!
     
     @IBAction func makeKittens(_ sender: UIButton) {
+        let delay = DelayProcedure(by: 2)
         let readingProcedure = KittenReadingProcedure()
+        readingProcedure.add(dependency: delay)
         let kittenProcedure = KittenResizeProcedure(size: kittensImageView.bounds.size).injectResult(from: readingProcedure)
         let completionProcedure = KittenCompletionProcedure { (image, error) in
             self.kittensImageView.image = image
@@ -30,8 +33,16 @@ class ViewController: UIViewController {
             procedure.requirement = .ready(resizedImage)
         }
         
+        let group = GroupProcedure(operations: delay, readingProcedure, kittenProcedure, completionProcedure)
+        group.addWillExecuteBlockObserver { _ in
+            DispatchQueue.main.async { self.activityIndicator.startAnimating() }
+        }
+        group.addDidFinishBlockObserver { (_, _) in
+            DispatchQueue.main.async { self.activityIndicator.stopAnimating() }
+        }
+        
         let queue = ProcedureQueue()
-        queue.add(operations: readingProcedure, kittenProcedure, completionProcedure)
+        queue.add(operation: group)
     }
 
 }
