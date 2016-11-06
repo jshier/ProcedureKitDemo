@@ -13,7 +13,8 @@
 		31B68B161DCE9C1200FE8B6A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31B68B151DCE9C1200FE8B6A /* Assets.xcassets */; };
 		31B68B191DCE9C1200FE8B6A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31B68B171DCE9C1200FE8B6A /* LaunchScreen.storyboard */; };
 		31B68B241DCE9C1200FE8B6A /* ProcedureKitDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B68B231DCE9C1200FE8B6A /* ProcedureKitDemoTests.swift */; };
-		31F7D08B1DCE9F6300B94482 /* 3000.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 31F7D08A1DCE9F6300B94482 /* 3000.jpeg */; };
+		31F7D08B1DCE9F6300B94482 /* BigKitten.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 31F7D08A1DCE9F6300B94482 /* BigKitten.jpeg */; };
+		31F7D08E1DCEA45700B94482 /* KittenResizingProcedure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F7D08D1DCEA45700B94482 /* KittenResizingProcedure.swift */; };
 		8A1130609FC8BEE5A43EACB4 /* Pods_ProcedureKitDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 531807FD300AB5C6A9189D46 /* Pods_ProcedureKitDemo.framework */; };
 		CC61781F173135F4C9D148CE /* Pods_ProcedureKitDemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94ACD946A669A0260BD24B61 /* Pods_ProcedureKitDemoTests.framework */; };
 /* End PBXBuildFile section */
@@ -40,7 +41,8 @@
 		31B68B1F1DCE9C1200FE8B6A /* ProcedureKitDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProcedureKitDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		31B68B231DCE9C1200FE8B6A /* ProcedureKitDemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcedureKitDemoTests.swift; sourceTree = "<group>"; };
 		31B68B251DCE9C1200FE8B6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		31F7D08A1DCE9F6300B94482 /* 3000.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 3000.jpeg; sourceTree = "<group>"; };
+		31F7D08A1DCE9F6300B94482 /* BigKitten.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = BigKitten.jpeg; sourceTree = "<group>"; };
+		31F7D08D1DCEA45700B94482 /* KittenResizingProcedure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KittenResizingProcedure.swift; sourceTree = "<group>"; };
 		531807FD300AB5C6A9189D46 /* Pods_ProcedureKitDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProcedureKitDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		59DDDB86E36CF434CAEEA339 /* Pods-ProcedureKitDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProcedureKitDemoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ProcedureKitDemoTests/Pods-ProcedureKitDemoTests.release.xcconfig"; sourceTree = "<group>"; };
 		66DAA455BB68910B72EE5E3C /* Pods-ProcedureKitDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProcedureKitDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-ProcedureKitDemo/Pods-ProcedureKitDemo.release.xcconfig"; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 		31B68B0D1DCE9C1200FE8B6A /* ProcedureKitDemo */ = {
 			isa = PBXGroup;
 			children = (
+				31F7D08C1DCEA42300B94482 /* Procedures */,
 				31F7D0891DCE9F4F00B94482 /* Supporting Files */,
 				31B68B0E1DCE9C1200FE8B6A /* AppDelegate.swift */,
 				31B68B101DCE9C1200FE8B6A /* ViewController.swift */,
@@ -110,13 +113,21 @@
 		31F7D0891DCE9F4F00B94482 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				31F7D08A1DCE9F6300B94482 /* 3000.jpeg */,
+				31F7D08A1DCE9F6300B94482 /* BigKitten.jpeg */,
 				31B68B151DCE9C1200FE8B6A /* Assets.xcassets */,
 				31B68B1A1DCE9C1200FE8B6A /* Info.plist */,
 				31B68B171DCE9C1200FE8B6A /* LaunchScreen.storyboard */,
 				31B68B121DCE9C1200FE8B6A /* Main.storyboard */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		31F7D08C1DCEA42300B94482 /* Procedures */ = {
+			isa = PBXGroup;
+			children = (
+				31F7D08D1DCEA45700B94482 /* KittenResizingProcedure.swift */,
+			);
+			path = Procedures;
 			sourceTree = "<group>";
 		};
 		3BB73B90987758DE972F4418 /* Pods */ = {
@@ -230,7 +241,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				31F7D08B1DCE9F6300B94482 /* 3000.jpeg in Resources */,
+				31F7D08B1DCE9F6300B94482 /* BigKitten.jpeg in Resources */,
 				31B68B191DCE9C1200FE8B6A /* LaunchScreen.storyboard in Resources */,
 				31B68B161DCE9C1200FE8B6A /* Assets.xcassets in Resources */,
 				31B68B141DCE9C1200FE8B6A /* Main.storyboard in Resources */,
@@ -345,6 +356,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				31B68B111DCE9C1200FE8B6A /* ViewController.swift in Sources */,
+				31F7D08E1DCEA45700B94482 /* KittenResizingProcedure.swift in Sources */,
 				31B68B0F1DCE9C1200FE8B6A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
