@@ -9,32 +9,20 @@
 import ProcedureKit
 import UIKit
 
-class KittenReadingProcedure: Procedure, ResultInjection {
-
-    var requirement: PendingValue<Void> = .void
-    var result: PendingValue<UIImage> = .pending
+class KittenReadingProcedure: ResultProcedure<UIImage> {
     
-    var image: UIImage? {
-        return result.value
-    }
-
-    override func execute() {
-        guard !isCancelled else { return }
-        
-        var error: Error? = nil
-        defer { finish(withError: error) }
-        
-        guard let path = Bundle.main.path(forResource: "BigKitten", ofType: "jpeg") else {
-            error = KittenError.fileNotFound
-            return
+    init() {
+        super.init {
+            guard let path = Bundle.main.path(forResource: "BigKitten", ofType: "jpeg") else {
+                throw KittenError.fileNotFound
+            }
+            
+            guard let image = UIImage(contentsOfFile: path) else {
+                throw KittenError.invalidImageData
+            }
+            
+            return image
         }
-        
-        guard let image = UIImage(contentsOfFile: path) else {
-            error = KittenError.invalidImageData
-            return
-        }
-        
-        result = .ready(image)
     }
     
 }

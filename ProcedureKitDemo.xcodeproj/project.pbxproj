@@ -14,7 +14,6 @@
 		31B68B191DCE9C1200FE8B6A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31B68B171DCE9C1200FE8B6A /* LaunchScreen.storyboard */; };
 		31B68B241DCE9C1200FE8B6A /* ProcedureKitDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B68B231DCE9C1200FE8B6A /* ProcedureKitDemoTests.swift */; };
 		31CB89061DCED4A0008ED0FA /* KittenReadingProcedure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31CB89051DCED4A0008ED0FA /* KittenReadingProcedure.swift */; };
-		31CB890A1DCEE13F008ED0FA /* KittenCompletionProcedure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31CB89091DCEE13F008ED0FA /* KittenCompletionProcedure.swift */; };
 		31F7D08B1DCE9F6300B94482 /* BigKitten.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 31F7D08A1DCE9F6300B94482 /* BigKitten.jpeg */; };
 		31F7D08E1DCEA45700B94482 /* KittenResizingProcedure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F7D08D1DCEA45700B94482 /* KittenResizingProcedure.swift */; };
 		8A1130609FC8BEE5A43EACB4 /* Pods_ProcedureKitDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 531807FD300AB5C6A9189D46 /* Pods_ProcedureKitDemo.framework */; };
@@ -44,7 +43,6 @@
 		31B68B231DCE9C1200FE8B6A /* ProcedureKitDemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcedureKitDemoTests.swift; sourceTree = "<group>"; };
 		31B68B251DCE9C1200FE8B6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		31CB89051DCED4A0008ED0FA /* KittenReadingProcedure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KittenReadingProcedure.swift; sourceTree = "<group>"; };
-		31CB89091DCEE13F008ED0FA /* KittenCompletionProcedure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KittenCompletionProcedure.swift; sourceTree = "<group>"; };
 		31F7D08A1DCE9F6300B94482 /* BigKitten.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = BigKitten.jpeg; sourceTree = "<group>"; };
 		31F7D08D1DCEA45700B94482 /* KittenResizingProcedure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KittenResizingProcedure.swift; sourceTree = "<group>"; };
 		531807FD300AB5C6A9189D46 /* Pods_ProcedureKitDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProcedureKitDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -129,7 +127,6 @@
 		31F7D08C1DCEA42300B94482 /* Procedures */ = {
 			isa = PBXGroup;
 			children = (
-				31CB89091DCEE13F008ED0FA /* KittenCompletionProcedure.swift */,
 				31CB89051DCED4A0008ED0FA /* KittenReadingProcedure.swift */,
 				31F7D08D1DCEA45700B94482 /* KittenResizingProcedure.swift */,
 			);
@@ -365,7 +362,6 @@
 				31F7D08E1DCEA45700B94482 /* KittenResizingProcedure.swift in Sources */,
 				31CB89061DCED4A0008ED0FA /* KittenReadingProcedure.swift in Sources */,
 				31B68B0F1DCE9C1200FE8B6A /* AppDelegate.swift in Sources */,
-				31CB890A1DCEE13F008ED0FA /* KittenCompletionProcedure.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -425,6 +421,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -475,6 +472,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;

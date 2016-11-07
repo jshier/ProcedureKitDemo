@@ -9,43 +9,19 @@
 import ProcedureKit
 import UIKit
 
-class KittenResizeProcedure: Procedure, ResultInjection {
+class KittenResizeProcedure: TransformProcedure<UIImage, UIImage> {
     
-    var requirement: PendingValue<UIImage> = .pending
-    var result: PendingValue<UIImage> = .pending
-    
-    var resizedImage: UIImage? {
-        return result.value
-    }
-    
-    let size: CGSize
-
     init(size: CGSize) {
-        self.size = size
-        
-        super.init()
-    }
-    
-    override func execute() {
-        guard !isCancelled else { return }
-        
-        var error: Error? = nil
-        defer { finish(withError: error) }
-        
-        guard let inputImage = requirement.value else {
-            error = ProcedureKitError.requirementNotSatisfied()
-            return
+        super.init { inputImage in
+            UIGraphicsBeginImageContextWithOptions(size, true, 0.0)
+            defer { UIGraphicsEndImageContext() }
+            inputImage.draw(in: CGRect(origin: .zero, size: size))
+            guard let resizedImage = UIGraphicsGetImageFromCurrentImageContext() else {
+                throw KittenError.resizeFailed
+            }
+
+            return resizedImage
         }
-        
-        UIGraphicsBeginImageContextWithOptions(size, true, 0.0)
-        defer { UIGraphicsEndImageContext() }
-        inputImage.draw(in: CGRect(origin: .zero, size: size))
-        guard let resizedImage = UIGraphicsGetImageFromCurrentImageContext() else {
-            error = KittenError.resizeFailed
-            return
-        }
-        
-        result = .ready(resizedImage)
     }
     
 }

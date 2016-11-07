@@ -19,21 +19,19 @@ class ViewController: UIViewController {
         let readingProcedure = KittenReadingProcedure()
         readingProcedure.add(dependency: delay)
         let kittenProcedure = KittenResizeProcedure(size: kittensImageView.bounds.size).injectResult(from: readingProcedure)
-        let completionProcedure = KittenCompletionProcedure { (image, error) in
-            self.kittensImageView.image = image
-            
-            // Handle error
-        }
-        .inject(dependency: kittenProcedure) { (procedure, dependency, errors) in
-            guard let resizedImage = dependency.result.value else {
-                procedure.error = errors.first
+        let completionHandler: (_ resizedImage: UIImage?, _ errors: [Error]?) -> Void = { (image, errors) in
+            if let errors = errors, !errors.isEmpty {
+                // Handle errors
                 return
             }
             
-            procedure.requirement = .ready(resizedImage)
+            DispatchQueue.main.async { self.kittensImageView.image = image }
+        }
+        kittenProcedure.addDidFinishBlockObserver { (resizeProcedure, errors) in
+            completionHandler(resizeProcedure.result.value, errors)
         }
         
-        let group = GroupProcedure(operations: delay, readingProcedure, kittenProcedure, completionProcedure)
+        let group = GroupProcedure(operations: delay, readingProcedure, kittenProcedure)
         group.addWillExecuteBlockObserver { _ in
             DispatchQueue.main.async { self.activityIndicator.startAnimating() }
         }
